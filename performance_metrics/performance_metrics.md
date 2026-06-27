@@ -1,0 +1,1 @@
+Metrics: (1) functional correctness (unit-test pass rate); (2) security robustness (Slither findings + fuzz/invariant properties like monotonic IDs, no self-purchase); (3) gas per operation; (4) confirmation latency; (5) modularity (slices independently testable).

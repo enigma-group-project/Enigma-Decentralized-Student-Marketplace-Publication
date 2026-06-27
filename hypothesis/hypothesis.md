@@ -1,0 +1,1 @@
+Hypotheses: (H1) safety invariants hold on-chain — owner-only mint; escrow releases only to seller on confirm or refunds buyer; ≤1 rating per sale by the verified buyer; (H2) the system withstands the threat model using only audited standards; (H3) gas and latency stay practical for a testnet deployment. Vertical slices can be built/evaluated independently yet compose correctly.
