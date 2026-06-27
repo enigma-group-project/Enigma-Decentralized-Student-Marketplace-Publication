@@ -1,22 +1,4 @@
-All four slices are implemented and their suites pass: 32 of 32 tests succeed (including the demo faucet and the fuzz/invariant suite), and Slither reports no high-severity findings. The owner-only mint, escrow release/refund, and one-rating-per-sale invariants hold; the stateful tests confirm that listing identifiers increase monotonically and that self-purchase is rejected. The contracts were deployed to a local Anvil chain and to the public Sepolia testnet and validated end-to-end through the hosted web client. Table~\ref{tab:status} summarizes per-slice status and Table~\ref{tab:gas} reports measured gas and latency.
-
-\begin{table}[t]
-\caption{Per-slice contract and test status}
-\label{tab:status}
-\centering\small
-\setlength{\tabcolsep}{8pt}
-\begin{tabular}{llll}
-\toprule
-Slice & Contract & Suite & Status \\
-\midrule
-1 Token + Wallet   & EnigCredit  & EnigCreditTest  & passing \\
-2 Listings         & Marketplace & ListingsTest    & passing \\
-3 Escrow + Ratings & Marketplace & EscrowTest      & passing \\
-4 Reputation       & Reputation  & ReputationTest  & passing \\
---- & --- & Invariant/Fuzz & passing \\
-\bottomrule
-\end{tabular}
-\end{table}
+All four slices are implemented and their suites pass: 32 of 32 tests succeed (including the demo faucet and the fuzz/invariant suite), and Slither reports no high-severity findings. The owner-only mint, escrow release/refund, and one-rating-per-sale invariants hold; the stateful tests confirm that listing identifiers increase monotonically and that self-purchase is rejected. The contracts were deployed to a local Anvil chain and to the public Sepolia testnet and validated end-to-end through the hosted web client. Table~\ref{tab:gas} reports measured gas and latency.
 
 \begin{table}[t]
 \caption{Per-operation gas (\texttt{forge test --gas-report}, avg) and confirmation latency}
