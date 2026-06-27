@@ -2,7 +2,7 @@
 
 [![Build paper](https://github.com/enigma-group-project/Enigma-Decentralized-Student-Marketplace-Publication/actions/workflows/build-paper.yml/badge.svg)](https://github.com/enigma-group-project/Enigma-Decentralized-Student-Marketplace-Publication/actions/workflows/build-paper.yml)
 
-Modular IEEE (`IEEEtran`, 2-page conference) source for the project paper. Each section is its own
+Modular IEEE (`IEEEtran` conference) source for the project paper. Each section is its own
 folder with a `.tex` (compiled) and a `.md` (readable mirror), consolidated by `main.tex`.
 
 ## Project links
@@ -12,18 +12,27 @@ folder with a `.tex` (compiled) and a `.md` (readable mirror), consolidated by `
 - **How to contribute:** [CONTRIBUTING.md](CONTRIBUTING.md) · **Edit in Overleaf:** [OVERLEAF.md](OVERLEAF.md)
 
 ## Structure (one folder per section; slices owned per member)
+IEEE-standard sections plus a modular per-slice reference. `main.tex` consolidates them in order.
+
 | Folder | Section | Owner |
 | --- | --- | --- |
 | `abstract/` | Abstract | all |
-| `introduction/` | Introduction | all |
-| `architecture/` | System Architecture + Threat Model | all |
+| `introduction/` | Introduction (motivation + roadmap) | all |
+| `related_research/` | Related Research | all |
+| `motivating_example/` | Motivating Example | all |
+| `threat_model/` | Threat Model | all |
+| `why_blockchain/` | Why Blockchain: Suitability & Compatibility | all |
+| `architecture/` | System Architecture + Threat Mitigations | all |
 | `slice1_token/` | Slice 1 — Token + Wallet | **Member 1** |
 | `slice2_listings/` | Slice 2 — Listings | **Member 2** |
 | `slice3_escrow/` | Slice 3 — Escrow + Ratings | **Member 3** |
 | `slice4_reputation/` | Slice 4 — Reputation | **Member 4** |
-| `evaluation/` | Evaluation | all |
+| `hypothesis/` | Hypothesis | all |
+| `performance_metrics/` | Performance Metrics | all |
+| `methodology/` | Methodology | all |
+| `empirical_evidence/` | Empirical Evidence (status + gas/latency tables) | all |
 | `conclusions_future_work/` | Conclusions + Future Work | all |
-| `references/` | BibTeX references | all |
+| `references/` | References | all |
 
 **Each member edits only their `sliceN_*` folder.** Leave the other files alone unless coordinating.
 

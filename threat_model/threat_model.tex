@@ -1,0 +1,8 @@
+We assume mutually distrusting buyers and sellers, a curious public (all on-chain data is world-readable), and an adversary able to submit arbitrary transactions.
+\begin{itemize}
+  \item \textbf{Adversary goals:} steal escrowed funds, obtain goods without paying, mint credits without authority, or forge and inflate reputation.
+  \item \textbf{Capabilities:} reentrant callbacks during token transfers, replayed or front-run transactions, malicious or non-compliant ERC-20 interactions, and calls from unauthorized accounts.
+  \item \textbf{Trust assumptions:} the Ethereum consensus layer is honest; the Solidity~0.8.20 compiler and OpenZeppelin~v5.1.0 libraries are trusted; \emph{no} off-chain trusted third party arbitrates trades.
+  \item \textbf{Defensive posture:} owner-gated issuance, checks-effects-interactions ordering with \texttt{ReentrancyGuard} and \texttt{SafeERC20}, one-rating-per-completed-sale binding, a \texttt{Pausable} emergency stop, and checked arithmetic with explicit custom errors.
+\end{itemize}
+The central risk is a settlement-time violation in which a buyer or seller extracts value before the contract reaches a consistent state; Sections~\ref{sec:arch} and~\ref{sec:slice3} detail how escrow ordering and reentrancy guards close this window.

@@ -1,0 +1,41 @@
+All four slices are implemented and their suites pass: 32 of 32 tests succeed (including the demo faucet and the fuzz/invariant suite), and Slither reports no high-severity findings. The owner-only mint, escrow release/refund, and one-rating-per-sale invariants hold; the stateful tests confirm that listing identifiers increase monotonically and that self-purchase is rejected. The contracts were deployed to a local Anvil chain and to the public Sepolia testnet and validated end-to-end through the hosted web client. Table~\ref{tab:status} summarizes per-slice status and Table~\ref{tab:gas} reports measured gas and latency.
+
+\begin{table}[t]
+\caption{Per-slice contract and test status}
+\label{tab:status}
+\centering\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+Slice & Contract & Suite & Status \\
+\midrule
+1 Token + Wallet   & EnigCredit  & EnigCreditTest  & passing \\
+2 Listings         & Marketplace & ListingsTest    & passing \\
+3 Escrow + Ratings & Marketplace & EscrowTest      & passing \\
+4 Reputation       & Reputation  & ReputationTest  & passing \\
+--- & --- & Invariant/Fuzz & passing \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\caption{Per-operation gas (\texttt{forge test --gas-report}, avg) and confirmation latency}
+\label{tab:gas}
+\centering\small
+\begin{tabular}{@{}lrll@{}}
+\toprule
+Operation & Gas & Latency & Notes \\
+\midrule
+\texttt{createListing}   & $\sim$248{,}900 & $\sim$12\,s & SSTORE-heavy listing write \\
+\texttt{purchaseItem}    & $\sim$111{,}800 & $\sim$12\,s & escrow \texttt{transferFrom} \\
+\texttt{confirmDelivery} & $\sim$65{,}600  & $\sim$12\,s & release to seller \\
+\texttt{rateUser}        & $\sim$80{,}700  & $\sim$12\,s & rating storage (first costs more) \\
+\midrule
+\texttt{mint}     & $\sim$38{,}700 & $\sim$12\,s & owner issuance \\
+\texttt{transfer} & $\sim$51{,}400 & $\sim$12\,s & ERC-20 move (cold) \\
+\texttt{burn}     & $\sim$33{,}900 & $\sim$12\,s & supply reduction \\
+\texttt{faucet}   & $\sim$53{,}600 & $\sim$12\,s & demo self-mint \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent Confirmation latency is one block: roughly 12\,s on Sepolia and sub-second on a local Anvil chain that mines on demand. The measured costs are modest---well under typical block gas limits---confirming hypothesis~H3 that the design is practical for a community-scale deployment.
