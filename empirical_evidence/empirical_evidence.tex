@@ -4,7 +4,8 @@ All four slices are implemented and their suites pass: 32 of 32 tests succeed (i
 \caption{Per-slice contract and test status}
 \label{tab:status}
 \centering\small
-\begin{tabular}{@{}llll@{}}
+\setlength{\tabcolsep}{8pt}
+\begin{tabular}{llll}
 \toprule
 Slice & Contract & Suite & Status \\
 \midrule
@@ -21,19 +22,20 @@ Slice & Contract & Suite & Status \\
 \caption{Per-operation gas (\texttt{forge test --gas-report}, avg) and confirmation latency}
 \label{tab:gas}
 \centering\small
-\begin{tabular}{@{}lrll@{}}
+\setlength{\tabcolsep}{8pt}
+\begin{tabular}{lrll}
 \toprule
 Operation & Gas & Latency & Notes \\
 \midrule
-\texttt{createListing}   & $\sim$248{,}900 & $\sim$12\,s & SSTORE-heavy listing write \\
-\texttt{purchaseItem}    & $\sim$111{,}800 & $\sim$12\,s & escrow \texttt{transferFrom} \\
-\texttt{confirmDelivery} & $\sim$65{,}600  & $\sim$12\,s & release to seller \\
-\texttt{rateUser}        & $\sim$80{,}700  & $\sim$12\,s & rating storage (first costs more) \\
+\texttt{createListing}   & $\sim$248{,}900 & $\sim$12\,s & listing write \\
+\texttt{purchaseItem}    & $\sim$111{,}800 & $\sim$12\,s & escrow pull \\
+\texttt{confirmDelivery} & $\sim$65{,}600  & $\sim$12\,s & release funds \\
+\texttt{rateUser}        & $\sim$80{,}700  & $\sim$12\,s & rating store \\
 \midrule
-\texttt{mint}     & $\sim$38{,}700 & $\sim$12\,s & owner issuance \\
-\texttt{transfer} & $\sim$51{,}400 & $\sim$12\,s & ERC-20 move (cold) \\
-\texttt{burn}     & $\sim$33{,}900 & $\sim$12\,s & supply reduction \\
-\texttt{faucet}   & $\sim$53{,}600 & $\sim$12\,s & demo self-mint \\
+\texttt{mint}     & $\sim$38{,}700 & $\sim$12\,s & owner mint \\
+\texttt{transfer} & $\sim$51{,}400 & $\sim$12\,s & ERC-20 move \\
+\texttt{burn}     & $\sim$33{,}900 & $\sim$12\,s & supply burn \\
+\texttt{faucet}   & $\sim$53{,}600 & $\sim$12\,s & demo mint \\
 \bottomrule
 \end{tabular}
 \end{table}
