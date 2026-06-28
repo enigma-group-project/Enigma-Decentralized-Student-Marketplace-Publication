@@ -1,6 +1,7 @@
 name: Build paper
 on:
   push: { branches: [ main, develop ] }
+  pull_request: { branches: [ develop ] }
   workflow_dispatch:
 permissions: { contents: write }
 jobs:
