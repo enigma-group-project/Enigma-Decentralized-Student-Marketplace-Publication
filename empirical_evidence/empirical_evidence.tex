@@ -1,4 +1,4 @@
-All four slices are implemented and their suites pass: 32 of 32 tests succeed (including the demo faucet and the fuzz/invariant suite), and Slither reports no high-severity findings. The owner-only mint, escrow release/refund, and one-rating-per-sale invariants hold; the stateful tests confirm that listing identifiers increase monotonically and that self-purchase is rejected. The contracts were deployed to a local Anvil chain and to the public Sepolia testnet and validated end-to-end through the hosted web client. Table~\ref{tab:gas} reports measured gas and latency.
+All four slices are implemented and their suites pass: 32 of 32 tests succeed (including the demo faucet and the fuzz/invariant suite), and Slither reports no high-severity findings. The owner-only mint, escrow release/refund, and one-rating-per-sale invariants hold; the stateful tests confirm that listing identifiers increase monotonically and that self-purchase is rejected. Table~\ref{tab:gas} reports measured gas and latency.
 
 \begin{table}[t]
 \caption{Per-operation gas (\texttt{forge test --gas-report}, avg) and confirmation latency}
@@ -22,4 +22,4 @@ Operation & Gas & Latency & Notes \\
 \end{tabular}
 \end{table}
 
-\noindent Confirmation latency is one block: roughly 12\,s on Sepolia and sub-second on a local Anvil chain that mines on demand. The measured costs are modest---well under typical block gas limits---confirming hypothesis~H3 that the design is practical for a community-scale deployment.
+\noindent Confirmation latency is one block---roughly 12\,s on Sepolia, sub-second on local Anvil---and the measured costs are modest, well under typical block gas limits, confirming hypothesis~H3 that the design is practical for community-scale deployment.
